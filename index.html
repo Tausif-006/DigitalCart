@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalCart - Premium Electronics & Gadgets</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sale Banner -->
+    <div class="sale-banner">
+        🔥 MEGA SALE! Up to 70% OFF on Electronics - Limited Time Only!
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div>📞 24/7 Customer Support: +91 750463790 </div>
+                <div>🚚 Free Shipping on Orders Over $500 </div>
+            </div>
+        </div>
+        <nav class="nav-container container">
+            <a href="#home" class="logo" aria-label="TechStore Home"> DIGITAL CART</a>
+            
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#home" role="menuitem">Home</a></li>
+                <li role="none"><a href="#products" role="menuitem">Products</a></li>
+                <li role="none"><a href="#categories" role="menuitem">Categories</a></li>
+                <li role="none"><a href="#deals" role="menuitem">Deals</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <label for="searchInput" class="sr-only">Search products</label>
+                    <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+                    <button class="search-btn" onclick="performSearch()" aria-label="Search">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                
+                <button class="mobile-search-btn" onclick="toggleMobileSearch()" aria-label="Open search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+                
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+                </button>
+                
+                <button class="cart-icon" onclick="toggleCart()" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-list" role="menu">
+            <li role="none"><a href="#home" role="menuitem">Home</a></li>
+            <li role="none"><a href="#products" role="menuitem">Products</a></li>
+            <li role="none"><a href="#categories" role="menuitem">Categories</a></li>
+            <li role="none"><a href="#deals" role="menuitem">Deals</a></li>
+            <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Search -->
+    <div class="mobile-search" id="mobileSearch">
+        <label for="mobileSearchInput" class="sr-only">Search products</label>
+        <input type="text" id="mobileSearchInput" placeholder="Search products..." autocomplete="off">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content container">
+            <h1>Latest Tech, Unbeatable Prices</h1>
+            <p>Discover cutting-edge electronics, gadgets, and accessories from top brands worldwide. Experience the future of technology today!</p>
+            <a href="#products" class="cta-button">
+                Shop Now <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <div class="container">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb-list" id="breadcrumbList">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterProducts('smartphones')" role="button" tabindex="0" aria-label="Shop smartphones">
+                    <div class="category-icon" aria-hidden="true">📱</div>
+                    <h3>Smartphones</h3>
+                    <p>Latest flagship and budget-friendly phones</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('laptops')" role="button" tabindex="0" aria-label="Shop laptops">
+                    <div class="category-icon" aria-hidden="true">💻</div>
+                    <h3>Laptops</h3>
+                    <p>Gaming, business, and ultrabooks</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('headphones')" role="button" tabindex="0" aria-label="Shop headphones">
+                    <div class="category-icon" aria-hidden="true">🎧</div>
+                    <h3>Headphones</h3>
+                    <p>Wireless, noise-cancelling, and gaming</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('cameras')" role="button" tabindex="0" aria-label="Shop cameras">
+                    <div class="category-icon" aria-hidden="true">📷</div>
+                    <h3>Cameras</h3>
+                    <p>DSLR, mirrorless, and action cameras</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('gaming')" role="button" tabindex="0" aria-label="Shop gaming products">
+                    <div class="category-icon" aria-hidden="true">🎮</div>
+                    <h3>Gaming</h3>
+                    <p>Consoles, accessories, and peripherals</p>
+                </div>
+                <div class="category-card" onclick="filterProducts('accessories')" role="button" tabindex="0" aria-label="Shop accessories">
+                    <div class="category-icon" aria-hidden="true">🔌</div>
+                    <h3>Accessories</h3>
+                    <p>Chargers, cables, and cases</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            
+            <div class="filters-container">
+                <div class="filters" role="group" aria-label="Product filters">
+                    <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                    <button class="filter-btn" onclick="filterProducts('smartphones')">Smartphones</button>
+                    <button class="filter-btn" onclick="filterProducts('laptops')">Laptops</button>
+                    <button class="filter-btn" onclick="filterProducts('headphones')">Headphones</button>
+                    <button class="filter-btn" onclick="filterProducts('cameras')">Cameras</button>
+                    <button class="filter-btn" onclick="filterProducts('gaming')">Gaming</button>
+                    <button class="filter-btn" onclick="filterProducts('accessories')">Accessories</button>
+                </div>
+                
+                <select class="sort-dropdown" id="sortDropdown" onchange="sortProducts(this.value)" aria-label="Sort products">
+                    <option value="">Sort by</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Rating</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+            
+            <div class="product-grid" id="productGrid" role="grid" aria-label="Products">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose TechStore?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast" aria-hidden="true"></i>
+                    </div>
+                    <h3>Free Fast Shipping</h3>
+                    <p>Free shipping on orders over $50. Express delivery available.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>100% secure transactions with SSL encryption and fraud protection.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset" aria-hidden="true"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support via chat, email, and phone.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo" aria-hidden="true"></i>
+                    </div>
+                    <h3>Easy Returns</h3>
+                    <p>30-day hassle-free returns and exchanges on all products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="review-grid">
+                <article class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="review-author">Sarah Johnson</div>
+                            <div class="product-rating">
+                                <span class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <div class="review-date">2 days ago</div>
+                    </div>
+                    <div class="review-content">
+                        "Amazing service! My laptop arrived the next day and works perfectly. The customer support team was incredibly helpful with my questions."
+                    </div>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="review-author">Mike Chen</div>
+                            <div class="product-rating">
+                                <span class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <div class="review-date">1 week ago</div>
+                    </div>
+                    <div class="review-content">
+                        "Best prices I've found anywhere! The smartphone I ordered was brand new and came with all accessories. Highly recommend TechStore."
+                    </div>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="review-author">Emily Rodriguez</div>
+                            <div class="product-rating">
+                                <span class="stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <div class="review-date">2 weeks ago</div>
+                    </div>
+                    <div class="review-content">
+                        "The wireless headphones I bought have incredible sound quality. The website was easy to navigate and checkout was seamless."
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated with Latest Tech</h2>
+            <p>Subscribe to our newsletter for exclusive deals, new arrivals, and tech insights.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)" novalidate>
+                <label for="newsletterEmail" class="sr-only">Email address</label>
+                <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TechStore</h4>
+                    <p>Your trusted partner for cutting-edge technology and electronics. We bring you the latest innovations at unbeatable prices.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#deals">Deals</a></li>
+                        <li><a href="#" onclick="showAbout()">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#" onclick="showContactForm()">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#" onclick="showFAQ()">FAQ</a></li>
+                        <li><a href="#" onclick="trackOrder()">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>📍 123 Tech Street, Silicon Valley, CA 94000</li>
+                        <li>📞 +91 750463790</li>
+                        <li>✉️ support@digitalcart.com</li>
+                        <li>🕒 Mon-Fri: 9AM-8PM PST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DigitalCart. All rights reserved. | 
+                <a href="https://www.linkedin.com/in/sk-tausif-2b4104311/" onclick="showPrivacyPolicy()">Sk Tausif</a> | 
+                <a href="#" onclick="showTermsOfService()">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-labelledby="cartTitle" aria-modal="false">
+        <div class="cart-header">
+            <h3 id="cartTitle">Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()" aria-label="Close cart">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                <p>Your cart is empty</p>
+                <p style="font-size: 0.875rem;">Add some products to get started!</p>
+            </div>
+        </div>
+        <div class="cart-total" id="cartTotal" style="display: none;">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="total-row">
+                <span>Shipping:</span>
+                <span id="shipping">Free</span>
+            </div>
+            <div class="total-row">
+                <span>Tax:</span>
+                <span id="tax">$0.00</span>
+            </div>
+            <div class="total-row final">
+                <span>Total:</span>
+                <span id="total">$0.00</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="checkout()">
+                <i class="fas fa-credit-card" aria-hidden="true"></i> Proceed to Checkout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal quick-view-modal" id="quickViewModal" role="dialog" aria-labelledby="quickViewTitle" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="quickViewTitle">Product Details</h3>
+                <button class="close-modal" onclick="closeModal('quickViewModal')" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="quick-view-content" id="quickViewContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal" role="dialog" aria-labelledby="checkoutTitle" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="checkoutTitle">Secure Checkout</h3>
+                <button class="close-modal" onclick="closeModal('checkoutModal')" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="checkout-steps">
+                <div class="step active">
+                    <span class="step-number">1</span>
+                    <span>Shipping</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <span>Payment</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span>Review</span>
+                </div>
+            </div>
+            <form id="checkoutForm" onsubmit="processCheckout(event)" novalidate>
+                <div id="shippingStep">
+                    <h4 style="margin-bottom: 1.5rem;">Shipping Information</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <div class="form-grid-3">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <select id="state" required>
+                                <option value="">Select State</option>
+                                <option value="CA">California</option>
+                                <option value="NY">New York</option>
+                                <option value="TX">Texas</option>
+                                <option value="FL">Florida</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">ZIP Code *</label>
+                            <input type="text" id="zip" required pattern="[0-9]{5}">
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-lock" aria-hidden="true"></i> Complete Order
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification" role="alert" aria-live="polite">
+        <div class="notification-content" id="notificationContent"></div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading" role="status" aria-live="polite">
+        <div class="spinner"></div>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <script src="script.js"></script>
+</html>
